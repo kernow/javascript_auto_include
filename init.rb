@@ -1,0 +1,1 @@
+require 'javascript_auto_include'

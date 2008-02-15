@@ -1,0 +1,41 @@
+JavascriptAutoInclude
+=====================
+
+== Resources
+
+Install
+ * Run the following command:
+ script/plugin install http://kernowsoul.com/svn/plugins/javascript_auto_include
+ 
+== Usage
+
+ Add the following to the head of your template file
+
+ <%= javascript_auto_include_tags %>
+ 
+ Now each time the template is loaded javascript files in the public/javascripts/views
+ folder that correspond to the name of the current controller or view will be auto
+ loaded. For example:
+
+ /public
+   /javascripts
+     /views
+       users.js
+       /users
+         edit.js
+       roles.js
+       /accounts
+         show.js
+
+ Assuming the above file structure loading each of the following urls would load:
+ 
+ mydomain.com/users             # loads users.js
+ mydomain.com/users/edit/1      # loads users.js and edit.js
+ mydomain.com/users/show/1      # loads users.js
+ mydomain.com/roles             # loads roles.js
+ mydomain.com/accounts          # no js files loaded
+ mydomain.com/accounts/show/1   # loads show.js
+
+== More
+
+http://hosting.media72.co.uk/blog/
