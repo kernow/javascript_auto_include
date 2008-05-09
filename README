@@ -6,6 +6,9 @@ JavascriptAutoInclude
 Install
  * Run the following command:
  script/plugin install http://kernowsoul.com/svn/plugins/javascript_auto_include
+
+ * On EDGE rails you can run
+ script/plugin install git://github.com/kernow/javascript_auto_include.git
  
 == Usage
 
