@@ -18,16 +18,16 @@ module ActionView
       # an unlimited number of views can be stringed together e.g.
       # new-edit-index.js would be included in the new, edit, and index views
       
-      @@js_path   = "#{RAILS_ROOT}/public/javascripts/views"
-      @@js_ext    = '.js'
-      @@js_url    = 'views'
-      @@delimiter = '-'
+      @@jsai_path       = "#{RAILS_ROOT}/public/javascripts/views"
+      @@jsai_ext        = '.js'
+      @@jsai_url        = 'views'
+      @@jsai_delimiter  = '-'
       
       def javascript_auto_include_tags
-        return unless File.directory? @@js_path
+        return unless File.directory? @@jsai_path
         paths = []
-        if File.exists?(File.join(@@js_path, controller.controller_name + @@js_ext))
-          paths.push(File.join(@@js_url, controller.controller_name))
+        if File.exists?(File.join(@@jsai_path, controller.controller_name + @@jsai_ext))
+          paths.push(File.join(@@jsai_url, controller.controller_name))
         end
         paths.push(search_dir(controller.controller_name, controller.action_name))
         javascript_include_tag paths
@@ -35,13 +35,13 @@ module ActionView
       
       private
       def search_dir(controller, action)
-        dir = File.join(@@js_path, controller)
+        dir = File.join(@@jsai_path, controller)
         return unless File.directory? dir
         paths = []
         Dir.new(dir).each do |file|
-          if File.extname(file) == @@js_ext
-            file.split(@@delimiter).collect do |part|
-              paths.push(File.join(@@js_url, controller, file)) if File.basename(part, @@js_ext) == action
+          if File.extname(file) == @@jsai_ext
+            file.split(@@jsai_delimiter).collect do |part|
+              paths.push(File.join(@@jsai_url, controller, file)) if File.basename(part, @@jsai_ext) == action
             end
           end
         end
