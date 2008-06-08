@@ -49,3 +49,9 @@ Install
 == More
 
 http://blog.media72.net/2008/05/13/javascript-auto-include-rails-plugin/
+
+== Acknowledgements 
+
+ Thanks to geoffgarside http://github.com/geoffgarside for also creating a version that can
+ include the same file in multiple views. Some of the code comments are from his version as
+ they are more concise than mine.
