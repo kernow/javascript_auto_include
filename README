@@ -7,7 +7,7 @@ Install
  * Run the following command:
  script/plugin install http://kernowsoul.com/svn/plugins/javascript_auto_include
 
- * On EDGE rails you can run
+ * On rails 2.1 and above you can run
  script/plugin install git://github.com/kernow/javascript_auto_include.git
  
 == Usage
@@ -18,7 +18,10 @@ Install
  
  Now each time the template is loaded javascript files in the public/javascripts/views
  folder that correspond to the name of the current controller or view will be auto
- loaded. For example:
+ loaded. It's also possible for the same javascript file to be loaded by multiple views
+ by adding the name of each view to the filename separated by the "-" character, e.g. to load
+ a javascript file in the new and edit views create a file named new-edit.js. Any number
+ of views can be strung together using this naming convention. For example:
 
  /public
    /javascripts
@@ -28,17 +31,21 @@ Install
          edit.js
        roles.js
        /accounts
-         show.js
+         show-new-edit-create.js
+		 show.js
 
- Assuming the above file structure loading each of the following urls would load:
+ Assuming the above file structure loading each of the following urls would include:
  
- mydomain.com/users             # loads users.js
- mydomain.com/users/edit/1      # loads users.js and edit.js
- mydomain.com/users/show/1      # loads users.js
- mydomain.com/roles             # loads roles.js
- mydomain.com/accounts          # no js files loaded
- mydomain.com/accounts/show/1   # loads show.js
+ mydomain.com/users             # includes users.js
+ mydomain.com/users/edit/1      # includes users.js and edit.js
+ mydomain.com/users/show/1      # includes users.js
+ mydomain.com/roles             # includes roles.js
+ mydomain.com/accounts          # no files included
+ mydomain.com/accounts/show/1   # includes show.js and show-new-edit-create.js
+ mydomain.com/accounts/new      # includes show-new-edit-create.js
+ mydomain.com/accounts/edit/1   # includes show-new-edit-create.js
+ mydomain.com/accounts/create   # includes show-new-edit-create.js
 
 == More
 
-http://hosting.media72.co.uk/blog/2008/05/13/javascript-auto-include-rails-plugin/
+http://blog.media72.net/2008/05/13/javascript-auto-include-rails-plugin/
