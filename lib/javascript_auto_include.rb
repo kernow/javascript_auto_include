@@ -22,30 +22,29 @@ module ActionView
       @@jsai_ext        = '.js'
       @@jsai_url        = 'views'
       @@jsai_delimiter  = '-'
+      @@jsai_paths      = []
       
       def javascript_auto_include_tags
+        @@jsai_paths = []
         return unless File.directory? @@jsai_path
-        paths = []
         if File.exists?(File.join(@@jsai_path, controller.controller_name + @@jsai_ext))
-          paths.push(File.join(@@jsai_url, controller.controller_name))
+          @@jsai_paths.push(File.join(@@jsai_url, controller.controller_name))
         end
-        paths.push(search_dir(controller.controller_name, controller.action_name))
-        javascript_include_tag paths
+        search_dir(controller.controller_name, controller.action_name)
+        javascript_include_tag @@jsai_paths
       end
       
       private
-      def search_dir(controller, action)
-        dir = File.join(@@jsai_path, controller)
+      def search_dir(cont, action)
+        dir = File.join(@@jsai_path, cont)
         return unless File.directory? dir
-        paths = []
         Dir.new(dir).each do |file|
           if File.extname(file) == @@jsai_ext
             file.split(@@jsai_delimiter).collect do |part|
-              paths.push(File.join(@@jsai_url, controller, file)) if File.basename(part, @@jsai_ext) == action
+              @@jsai_paths.push(File.join(@@jsai_url, cont, file)) if File.basename(part, @@jsai_ext) == action
             end
           end
         end
-        return paths
       end
       
     end
