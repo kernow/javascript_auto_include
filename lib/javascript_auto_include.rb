@@ -31,7 +31,7 @@ module ActionView
           @@jsai_paths.push(File.join(@@jsai_url, controller.controller_name))
         end
         search_dir(controller.controller_name, controller.action_name)
-        javascript_include_tag @@jsai_paths
+        javascript_include_tag *@@jsai_paths
       end
       
       private
