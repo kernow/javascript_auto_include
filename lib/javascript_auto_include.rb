@@ -27,8 +27,8 @@ module ActionView
       def javascript_auto_include_tags
         @@jsai_paths = []
         return unless File.directory? @@jsai_path
-        if File.exists?(File.join(@@jsai_path, controller.controller_name + @@jsai_ext))
-          @@jsai_paths.push(File.join(@@jsai_url, controller.controller_name))
+        if File.exists?(File.join(@@jsai_path, controller.controller_path + @@jsai_ext))
+          @@jsai_paths.push(File.join(@@jsai_url, controller.controller_path))
         end
         search_dir(controller.controller_name, controller.action_name)
         javascript_include_tag *@@jsai_paths
