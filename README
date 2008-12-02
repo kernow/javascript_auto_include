@@ -4,10 +4,7 @@ JavascriptAutoInclude
 == Resources
 
 Install
- * Run the following command:
- script/plugin install http://kernowsoul.com/svn/plugins/javascript_auto_include
-
- * On rails 2.1 and above you can run
+ * On rails 2.1 and above run
  script/plugin install git://github.com/kernow/javascript_auto_include.git
  
 == Usage
